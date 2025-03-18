@@ -19,13 +19,13 @@ def calculate_average(grades):
     average = total /len(grades)
     return average
 
-if calculate_average(grades) < 50:
+if calculate_average(grades) > 50:
     print("Average grade is failing.")
 else:
     print("Average grade is passing.")
 
 grades.sort()
-print("Highest Grade:", grades[5])
+print("Highest Grade:", grades[len(grades)-1])
 
 # Runtime Error 2: TypeError in string concatenation
 average_grade = calculate_average(grades)
