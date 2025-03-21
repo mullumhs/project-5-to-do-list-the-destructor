@@ -33,7 +33,10 @@ def remove_task(list):
         removeindex = get_number("Which number on your list would you like to remove?")
         confirm = input("Would you like to confirm? Y/N: ")
         if(confirm == "Y" or  confirm == "y"):
-            list.pop(removeindex)
+            try:    
+                list.pop(removeindex)
+            except IndexError:
+                return
             print("This is the updated list:")
             view_list(list)
             return  
@@ -42,7 +45,11 @@ def mark_task(list):
     while True:
         view_list(list)
         markindex = get_number("Which number item on your list would you like to mark as done?")
-        list[markindex] = "//" + list[markindex]
+        try:
+            list[markindex] = "//" + list[markindex]
+        except IndexError:
+            print("Invalid number to edit:")
+            return
         print("This is the updated list:")
         view_list(list)
         return  
@@ -50,7 +57,11 @@ def edit_task(list):
     while True:
         view_list(list)
         editindex = get_number("Which number item on your list would you like to edit?")
-        list[editindex] = input("Type in your edited task: ")
+        try:
+            list[editindex] = input("Type in your edited task: ")
+        except IndexError:
+            print("Invalid number to edit:")
+            return
         print("This is the updated list:")
         view_list(list)
         return  
