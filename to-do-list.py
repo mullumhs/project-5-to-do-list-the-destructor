@@ -22,12 +22,10 @@ def view_list(list):
 def add_task(list):
     while True:
         newtask = input("Add a task: ")
-        confirm = input("Would you like to confirm? Y/N: ")
-        if(confirm == "Y" or  confirm == "y"):
-            list.append(newtask)
-            print("This is the updated list:")
-            view_list(list)
-            return
+        list.append(newtask)
+        print("This is the updated list:")
+        view_list(list)
+        return
 
 def remove_task(list):
     while True:
@@ -43,23 +41,19 @@ def remove_task(list):
 def mark_task(list):
     while True:
         view_list(list)
-        markindex = get_number("Which number on your list would you like to mark as done?")
-        confirm = input("Would you like to confirm? Y/N: ")
-        if(confirm == "Y" or  confirm == "y"):
-            list[markindex] = "//" + list[markindex]
-            print("This is the updated list:")
-            view_list(list)
-            return  
+        markindex = get_number("Which number item on your list would you like to mark as done?")
+        list[markindex] = "//" + list[markindex]
+        print("This is the updated list:")
+        view_list(list)
+        return  
 def edit_task(list):
     while True:
         view_list(list)
-        editindex = get_number("Which number on your list would you like to mark as done?")
-        confirm = input("Would you like to confirm? Y/N: ")
-        if(confirm == "Y" or  confirm == "y"):
-            list[editindex] = input("Type in your edited task: ")
-            print("This is the updated list:")
-            view_list(list)
-            return  
+        editindex = get_number("Which number item on your list would you like to edit?")
+        list[editindex] = input("Type in your edited task: ")
+        print("This is the updated list:")
+        view_list(list)
+        return  
         
 def search_task(list):
     view_list(list)
@@ -100,6 +94,6 @@ def menu():
     
 while True:
     menu()
-    confirm = input("Would you like to go again? Y/N: ")
-    if(confirm != "Y" and confirm != "y"):
+    confirm = input("end program? Y/N: ")
+    if(confirm == "Y" or confirm == "y"):
         break
